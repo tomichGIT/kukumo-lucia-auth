@@ -10,7 +10,7 @@ import { signInSchema } from "./SignInForm"
 import { redirect } from "next/navigation"
 import { generateCodeVerifier, generateState } from "arctic"
 import { googleOAuthClient } from "@/lib/googleOauth"
-
+import { githubOAuthClient } from "@/lib/githubOauth"
 
 export const signUp = async (values: z.infer<typeof signUpSchema>) => {
     try {
@@ -68,6 +68,34 @@ export const logOut = async () => {
     return redirect('/authenticate')
 }
 
+// no implementado
+export const getGithubOauthConsentUrl = async () => {
+    try {
+        const state = generateState()
+        const codeVerifier = generateCodeVerifier()
+
+        cookies().set('codeVerifier', codeVerifier, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production'
+        })
+        cookies().set('state', state, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production'
+        })
+
+        const authUrl="http://github-login-sin-configurar";
+        // const authUrl = await githubOAuthClient.createAuthorizationURL(state, codeVerifier, {
+        //     scopes: ['read:user']
+        // })
+        return { success: true, url: authUrl.toString() }
+
+    } catch (error) {
+        return { success: false, error: 'Something went wrong' }
+    }
+
+}
+
+// si funciona!
 export const getGoogleOauthConsentUrl = async () => {
     try {
         const state = generateState()
