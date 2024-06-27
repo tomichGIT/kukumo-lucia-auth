@@ -12,6 +12,10 @@ import { generateCodeVerifier, generateState } from "arctic"
 import { googleOAuthClient } from "@/lib/googleOauth"
 import { githubOAuthClient } from "@/lib/githubOauth"
 
+
+/* ------------------------------------------------------------------------------
+            Auth con Email / Password
+------------------------------------------------------------------------------ */
 export const signUp = async (values: z.infer<typeof signUpSchema>) => {
     try {
         // if user already exists, throw an error
@@ -68,7 +72,10 @@ export const logOut = async () => {
     return redirect('/authenticate')
 }
 
-// no implementado
+/* ------------------------------------------------------------------------------
+            Auth con Github
+            // no implementado, fijatse si funciona
+------------------------------------------------------------------------------ */
 export const getGithubOauthConsentUrl = async () => {
     try {
         const state = generateState()
@@ -83,10 +90,11 @@ export const getGithubOauthConsentUrl = async () => {
             secure: process.env.NODE_ENV === 'production'
         })
 
-        const authUrl="http://github-login-sin-configurar";
+        const authUrl="https://api.github.com/user";
         // const authUrl = await githubOAuthClient.createAuthorizationURL(state, codeVerifier, {
         //     scopes: ['read:user']
         // })
+
         return { success: true, url: authUrl.toString() }
 
     } catch (error) {
@@ -95,7 +103,10 @@ export const getGithubOauthConsentUrl = async () => {
 
 }
 
-// si funciona!
+/* ------------------------------------------------------------------------------
+            Auth con Google
+            // si funciona!
+------------------------------------------------------------------------------ */
 export const getGoogleOauthConsentUrl = async () => {
     try {
         const state = generateState()

@@ -1,5 +1,7 @@
 import { GitHub } from 'arctic';
 
 
-export const githubOAuthClient = {};
-//export const githubOAuthClient = new GitHub(.... otras cosas acaá adentro);
+export const githubOAuthClient = new GitHub(
+    process.env.GITHUB_CLIENT_ID!,
+    process.env.GITHUB_CLIENT_SECRET!
+  );

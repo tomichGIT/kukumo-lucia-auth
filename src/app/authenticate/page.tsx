@@ -5,6 +5,7 @@ import SignUpForm from './SignUpForm'
 import { getUser } from '@/lib/lucia'
 import { redirect } from 'next/navigation'
 import GoogleOAuthButton from '@/components/GoogleOAuthButton'
+import GithubOAuthButton from '@/components/GithubOAuthButton'
 
 const AuthenticatePage = async () => {
   const user = await getUser()
@@ -15,6 +16,7 @@ const AuthenticatePage = async () => {
     <div className='relative flex w-full h-screen bg-background'>
       <div className='max-w-3xl absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
         <GoogleOAuthButton />
+        <GithubOAuthButton />
         <div className="h-4"></div>
         <TabSwitcher SignInTab={<SignInForm />} SignUpTab={<SignUpForm />} />
       </div>

@@ -1,3 +1,19 @@
+## Crear Auth de google
+- https://www.youtube.com/watch?v=t-JJgTRf3Ms
+
+Muchos datos del formulario vacío. 
+
+Primero crear pantalla de consentimiento (https://console.cloud.google.com/)
+
+Luego crear credenciales oauth
+
+URI: http://localhost:3000
+
+URI redireccionamiento: http://localhost:3000/api/auth/google/callback
+
+
+
+
 ![image](https://github.com/Elliott-Chong/lucia-auth-yt/assets/77007117/4e9823a5-01d2-4771-9283-d0715ad83bb7)
 
 [Video Link](https://youtu.be/t-JJgTRf3Ms)
@@ -5,15 +21,6 @@
 If you're interested in learning my strategies for winning hackathons, including a full stack tutorial on a real project that won me $5,000, visit the platform: [Bysyntax](https://bysyntax.com).
 
 Today I will show you how to build the perfect authentication system in React with Typescript, using Lucia-Auth. [Lucia-Auth](https://lucia-auth.com/)
-
-## Crear Auth de google
-- https://www.youtube.com/watch?v=t-JJgTRf3Ms
-Muchos datos del formulario vacío.
-Primero crear pantalla de consentimiento (https://console.cloud.google.com/)
-Luego crear credenciales oauth
-URI: http://localhost:3000
-URI redireccionamiento: http://localhost:3000/api/auth/google/callback
-
 
 
 ## Resources
